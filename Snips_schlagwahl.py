@@ -19,15 +19,15 @@ def subscribe_intent_callback(hermes, intent_message):
 
     if intentname == user_intent("Schlagwahl"):
         schlag = intentMessage.slots.schlag.first().value
-        result_sentence = "Die Auswahl ist: {}".format(str(SchlagWerte))
-	#print("Schlag ausm GitHub ausgeführt: {}!!!".format(str(schlag)))
+        result_sentence = "Die Auswahl ist: {}".format(str(schlag))
+	print("Schlag ausm GitHub ausgeführt: {}!!!".format(str(schlag)))
         current_session_id = intent_message.session_id
         hermes.publish_end_session(current_session_id, result_sentence)
 
     elif intentname == user_intent("FarbWahl"):
         farbe = intentMessage.slots.farbe.first().value
-        result_sentence = "Die Auswahl ist: {}".format(str(FarbWahl))
-	#print("Farbe ausm GitHub ausgeführt: {}!!!".format(str(farbe)))
+        result_sentence = "Die Auswahl ist: {}".format(str(farbe))
+	print("Farbe ausm GitHub ausgeführt: {}!!!".format(str(farbe)))
         current_session_id = intent_message.session_id
         hermes.publish_end_session(current_session_id, result_sentence)
 
