@@ -4,14 +4,11 @@ import paho.mqtt.client as mqtt
 from hermes_python.hermes import Hermes, MqttOptions
 import os
 
-USERNAME_INTENTS = "WattenRoboter"
+USERNAME_INTENTS = "xopsa"
 MQTT_BROKER_ADDRESS = "localhost:1883"
 MQTT_USERNAME = None
 MQTT_PASSWORD = None
 
-def on_connect(client, userdata, flags, rc): 
-    print('Connected') 
-    mqtt.subscribe('hermes/intent/#')
 	
 def user_intent(intentname):
     return USERNAME_INTENTS + ":" + intentname
@@ -20,16 +17,16 @@ def user_intent(intentname):
 def subscribe_intent_callback(hermes, intent_message):
     intentname = intent_message.intent.intent_name
 
-    if intentname == user_intent("sieben"):
+    if intentname == user_intent("Schlagwahl"):
         schlag = intentMessage.slots.schlag.first().value
-        result_sentence = "Die Auswahl ist: {}".format(str(schlag))
+        result_sentence = "Die Auswahl ist: {}".format(str(SchlagWerte))
 	#print("Schlag ausm GitHub ausgeführt: {}!!!".format(str(schlag)))
         current_session_id = intent_message.session_id
         hermes.publish_end_session(current_session_id, result_sentence)
 
-    elif intentname == user_intent("FarbeWaehlen"):
+    elif intentname == user_intent("FarbWahl"):
         farbe = intentMessage.slots.farbe.first().value
-        result_sentence = "Die Auswahl ist: {}".format(str(farbe))
+        result_sentence = "Die Auswahl ist: {}".format(str(FarbWahl))
 	#print("Farbe ausm GitHub ausgeführt: {}!!!".format(str(farbe)))
         current_session_id = intent_message.session_id
         hermes.publish_end_session(current_session_id, result_sentence)
