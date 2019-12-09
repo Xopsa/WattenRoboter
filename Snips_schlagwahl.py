@@ -16,7 +16,6 @@ def user_intent(intentname):
 
 def schlagAuswahl(hermes, intent_message):
     intentname = intent_message.intent.intent_name
-    intentname == user_intent("Schlagwahl"):
     schlag = intentMessage.slots.schlag.first().value
     result_sentence = "Die Auswahl ist: {}".format(str(schlag)
     #print("Schlag ausm GitHub ausgeführt: {}!!!".format(str(schlag)))
@@ -24,7 +23,7 @@ def schlagAuswahl(hermes, intent_message):
     hermes.publish_end_session(current_session_id, result_sentence)
 
 def farbAuswahl(hermes, intent_message):
-    intentname == user_intent("FarbWahl"):
+    intentname = intent_message.intent.intent_name
     farbe = intentMessage.slots.farbe.first().value
     result_sentence = "Die Auswahl ist: {}".format(str(farbe))
     #print("Farbe ausm GitHub ausgeführt: {}!!!".format(str(farbe)))
